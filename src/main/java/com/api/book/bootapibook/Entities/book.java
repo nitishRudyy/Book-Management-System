@@ -1,6 +1,8 @@
 package com.api.book.bootapibook.Entities;
+ 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,12 +19,14 @@ public class book {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     @Column(name = "book_id")
     private int id;
+    
     private String title;
 
     @OneToOne(cascade=CascadeType.ALL)
+    @JsonManagedReference
     private Author author;
 
     public book(Author author, int id, String title) {
